@@ -1,6 +1,5 @@
-package Recursion;
+package com.company.Recursion;
 
-import javax.script.ScriptContext;
 import java.util.Scanner;
 
 public class Square {

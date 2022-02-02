@@ -1,6 +1,5 @@
-package Hackerrank;
+package com.company.Hackerrank;
 
-import java.io.*;
 import java.util.*;
 class Node{
     int data;

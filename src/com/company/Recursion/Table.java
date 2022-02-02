@@ -1,4 +1,4 @@
-package Recursion;
+package com.company.Recursion;
 
 import java.util.Scanner;
 
