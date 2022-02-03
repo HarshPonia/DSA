@@ -1,5 +1,4 @@
 package com.company.CircularLinkedList;
-
 import java.util.Scanner;
 
 public class DemoCircular {
@@ -115,7 +114,48 @@ public class DemoCircular {
         System.out.println();
 
     }
-
+    public int  DeleteAtBeg(){
+        int e = head.data;
+        head = head.next;
+        tail.next = head;
+        size--;
+        return e;
+    }
+    public  int  DeleteAtEnd(){
+        Node temp = head;
+        int i =1;
+        while (i<size){
+            temp = temp.next;
+            i++;
+        }
+        int e = temp.data;
+        temp.next = head;
+        tail = temp;
+        size--;
+        return e;
+    }
+    public  int DeleteAtPos(int pos) {
+        if (pos <= 0 || pos >= size - 1) {
+            System.out.println("Invalid position");
+        } else {
+            if (pos == 1) {
+                head = head.next;
+                tail.next = head;
+            } else {
+                Node temp = head;
+                int i = 1;
+                while (i < pos - 1) {
+                    temp = temp.next;
+                    i = i + 1;
+                }
+                int e = temp.next.data;
+                temp.next = temp.next.next;
+                return e;
+            }
+            size--;
+        }
+        return 0;
+    }
     public static void main(String[] args) {
         DemoCircular obj = new DemoCircular();
 //        Scanner sc = new Scanner(System.in);
@@ -130,13 +170,20 @@ public class DemoCircular {
 //        System.out.println("Length of Linked List  : " + obj.length());
 //        obj.display();
 //        obj.insertAtBeg(10);
-        obj.InsertAtEnd(30);
         obj.InsertAtEnd(20);
+        obj.InsertAtEnd(30);
         obj.insertAtBeg(10);
-
-        obj.InserAtPos(40 ,1);
+        obj.InsertAtEnd(40);
+        obj.InsertAtEnd(50);
+//        obj.InserAtPos(40 ,1);
+//        obj.display();
+//        System.out.println("The size of Linked List is : "+ obj.length());
+        System.out.println("Deleted element : " + obj.DeleteAtBeg());
+//        obj.display();
+//        System.out.println("The size of Linked List is : "+ obj.length());
+        System.out.println("Deleted element  : " + obj.DeleteAtEnd());
+//        System.out.println("Deleted element : " + obj.DeleteAtPos(3));
         obj.display();
         System.out.println("The size of Linked List is : "+ obj.length());
     }
-
 }
