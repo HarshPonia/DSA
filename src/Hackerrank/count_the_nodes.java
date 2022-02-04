@@ -1,4 +1,4 @@
-package com.company.Hackerrank;
+package Hackerrank;
 
 
 public class count_the_nodes {

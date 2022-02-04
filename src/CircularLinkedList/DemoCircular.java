@@ -1,4 +1,4 @@
-package com.company.CircularLinkedList;
+package CircularLinkedList;
 import java.util.Scanner;
 
 public class DemoCircular {

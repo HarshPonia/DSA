@@ -1,4 +1,4 @@
-package com.company.Hackerrank;
+package Hackerrank;
 
 import java.util.*;
 class Node{

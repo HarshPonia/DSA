@@ -1,4 +1,4 @@
-package com.company;
+package Single_LinkedList;
 
 import java.io.*;
 import java.util.LinkedList;

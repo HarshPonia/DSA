@@ -1,4 +1,4 @@
-package com.company;
+package Single_LinkedList;
 
 /* Java program to implement basic stack
 operations */
