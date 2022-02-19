@@ -1,4 +1,6 @@
 package CircularLinkedList;
+import Assignment.SingleWithTail;
+
 import java.util.Scanner;
 
 public class DemoCircular {
@@ -15,6 +17,7 @@ public class DemoCircular {
     }
     DemoCircular(){
         tail = null;
+
         size = 0;
         head = null;
     }
@@ -42,6 +45,7 @@ public class DemoCircular {
         if(isEmpty()){
             new_node.next = new_node;
             head = new_node;
+            tail = head;
         }
         else{
             tail.next = new_node;
@@ -90,7 +94,6 @@ public class DemoCircular {
                 head = new_node;
             }
             else {
-
                 Node temp = head;
                 int i = 1;
                 while (i < pos - 1) {
@@ -103,10 +106,34 @@ public class DemoCircular {
             size++;
         }
     }
+    public void InsertWithNode(Node n,int pos) {
+        if (pos<=0 || pos>size+1) {
+            System.out.println("Invalid Postion ");
+        }
+        else {
+            if (pos == 1) {
+                tail.next = n;
+                n.next = head;
+                head = n;
+            }
+            else {
+                Node temp = head;
+                int i = 1;
+                while (i < pos - 1) {
+                    temp = temp.next;
+                    i = i + 1;
+                }
+                n.next = temp.next;
+                temp.next = n;
+            }
+            size++;
+        }
+    }
+
     public void display(){
-        int i =0;
+        int i =1;
         Node currnode = head;
-        while (i<length()){
+        while (i<size){
             System.out.print(currnode.data + " ");
             currnode = currnode.next;
             i++;
@@ -114,12 +141,17 @@ public class DemoCircular {
         System.out.println();
 
     }
-    public int  DeleteAtBeg(){
-        int e = head.data;
-        head = head.next;
-        tail.next = head;
-        size--;
-        return e;
+    public int  DeleteAtBeg() {
+        if (head == null) {
+            System.out.println("No element ");
+            return -1;
+        } else {
+            int e = head.data;
+            head = head.next;
+            tail.next = head;
+            size--;
+            return e;
+        }
     }
     public  int  DeleteAtEnd(){
         Node temp = head;
@@ -154,7 +186,54 @@ public class DemoCircular {
             }
             size--;
         }
-        return 0;
+        return -1;
+    }
+    public int  DeleteWithNode(Node n){
+        int e = -1;
+        if(isEmpty()){
+            System.out.println("No Element ");
+            return e;
+        }
+        else {
+            if(head.data == n.data){
+                e = head.data;
+                head = head.next;
+                tail.next = head;
+                size--;
+                return e;
+            }
+            else {
+                Node temp = head;
+                while (temp.next!=head){
+                    if ((temp.next.data == n.data)){
+                        e = temp.next.data;
+                        temp.next = temp.next.next;
+                        break;
+                    }
+                    temp = temp.next;
+                }
+                size--;
+            }
+
+            return e;
+        }
+    }
+    public int search(int d){
+        if(head == null){
+            return  -1;
+        }
+        else {
+            Node temp = head;
+            int i = 1;
+            while (temp.next!=head){
+                if(temp.data == d){
+                    return i;
+                }
+                temp =temp.next;
+                i++;
+            }
+            return -1;
+        }
     }
     public static void main(String[] args) {
         DemoCircular obj = new DemoCircular();
@@ -169,20 +248,24 @@ public class DemoCircular {
 //        obj.InserAtPos(sc.nextInt(), sc.nextInt());
 //        System.out.println("Length of Linked List  : " + obj.length());
 //        obj.display();
-//        obj.insertAtBeg(10);
+        obj.insertAtBeg(10);
+        System.out.println("Length of Linked List  : " + obj.length());
         obj.InsertAtEnd(20);
         obj.InsertAtEnd(30);
-        obj.insertAtBeg(10);
+//        obj.insertAtBeg(10);
         obj.InsertAtEnd(40);
         obj.InsertAtEnd(50);
 //        obj.InserAtPos(40 ,1);
 //        obj.display();
 //        System.out.println("The size of Linked List is : "+ obj.length());
-        System.out.println("Deleted element : " + obj.DeleteAtBeg());
+//        System.out.println("Deleted element : " + obj.DeleteAtBeg());
+        System.out.println("Deleted Element : " + obj.DeleteWithNode(new Node(10)));
 //        obj.display();
 //        System.out.println("The size of Linked List is : "+ obj.length());
-        System.out.println("Deleted element  : " + obj.DeleteAtEnd());
+//        System.out.println("Deleted element  : " + obj.DeleteAtEnd());
 //        System.out.println("Deleted element : " + obj.DeleteAtPos(3));
+//        obj.InsertWithNode(new Node(61),1);
+        System.out.println("Result : "+ obj.search(20));
         obj.display();
         System.out.println("The size of Linked List is : "+ obj.length());
     }

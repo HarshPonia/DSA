@@ -1,11 +1,13 @@
 package DoublyLinkedList;
 
-public class DemoDoubly {
-    Node head;
-    Node tail;
-    int size;
+import Assignment.SingleWithTail;
 
-    class Node {
+public class DemoDoubly {
+    static Node head;
+    static Node tail;
+    static int size;
+
+    static class Node {
         Node prev;
         Node next;
         int data;
@@ -92,6 +94,31 @@ public class DemoDoubly {
             size++;
         }
     }
+    public void insertAtPos(Node n,int pos){
+        if(pos<=0 || pos>size+1){
+            System.out.println("Invalid position ");
+        }
+        else {
+            if(pos == 1){
+                head.prev = n;
+                n.next = head;
+                head = n;
+            }
+            else {
+                Node temp = head;
+                int i =1;
+                while(i<pos-1){
+                   temp = temp.next;
+                   i++;
+                }
+                n.next = temp.next;
+                temp.next = n;
+                n.prev = temp.prev;
+                temp.prev = n;
+            }
+            size++;
+        }
+    }
     public void Display(){
         int i =0;
         Node temp = head;
@@ -160,18 +187,87 @@ public class DemoDoubly {
         }
         return e;
     }
+    public int DeleteWithNode(Node n){
+        int e = -1;
+        if(head == null){
+            System.out.println("No element ");
+            return e;
+        }
+        else{
+            if(head.data == n.data){
+                e  = head.data;
+                head = head.next;
+                head.prev = null;
+                size--;
+                return  e;
+
+            }
+            else {
+                Node temp = head;
+                while (temp != null) {
+                    if (temp.next.data == n.data) {
+                        e = temp.next.data;
+                        temp.next = temp.next.next;
+                        break;
+                    }
+                    temp = temp.next;
+                }
+                size--;
+                return e;
+            }
+        }
+    }
+    public int Search(int d){
+        if(head == null){
+            return  -1;
+        }
+        else {
+            Node temp = head;
+            int i = 1;
+            while (temp!=null){
+                if(temp.data == d){
+                    return i;
+                }
+                temp =temp.next;
+                i++;
+            }
+            return -1;
+        }
+    }
+    public int SearchWithNde(Node n){
+        if(head == null){
+            return  -1;
+        }
+        else {
+            Node temp = head;
+            int i = 1;
+            while (temp!=null){
+                if(temp.data == n.data){
+                    return i;
+                }
+                temp =temp.next;
+                i++;
+            }
+            return -1;
+        }
+    }
     public static void main(String args[]){
         DemoDoubly obj = new DemoDoubly();
         obj.InsertAtBeg(10);
-        obj.InsertAtBeg(5);
-        obj.InsertAtEnd(15);
-        obj.InsertAtEnd(20);
-        obj.InsertAtEnd(25);
-        obj.InsertAtPos(17,1);
-//        System.out.println("Deleted element is : " + obj.DeleteAtBeg());
+//        obj.InsertAtBeg(5);
+//        obj.InsertAtEnd(15);
+//        obj.InsertAtEnd(20);
+//        obj.InsertAtEnd(25);
+//        obj.InsertAtPos(17,1);
+        System.out.println("Deleted element is : " + obj.DeleteAtBeg());
 //        System.out.println("Deleted element is : " + obj.DeleteAtEnd());
 //        System.out.println("Deleted element is : " + obj.DeleteAtpos(2));
+//        obj.insertAtPos(new Node(21),6);
         obj.Display();
+//        System.out.println("Result : "+ obj.Search(20));
+//        System.out.println("Result "+ obj.SearchWithNde(new Node(20)));
+//        System.out.println("Deleted elemen is :"+ obj.DeleteWithNode(new Node(20)));
+//        obj.Display();
         System.out.println("the Size of The linkedList is : "+ obj.length());
     }
 }
