@@ -143,19 +143,7 @@ public class DemoDoubly {
         }
         return 0;
     }
-    public int  DeleteAtEnd(){
-        if(IsEmpty()){
-            System.out.println("Linked List  is Already Empty ");
-        }
-        else {
-            int e = tail.data;
-            tail = tail.prev;
-            tail.next = null;
-            size--;
-            return e;
-        }
-        return 0;
-    }
+
     public int DeleteAtpos(int pos){
         int e = 0;
         if(pos<=0 || pos>size){

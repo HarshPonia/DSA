@@ -8,6 +8,7 @@ public class Square {
         if(n>0)
         {
             System.out.println("Square of " + n + " " + n*n);
+
             print(n-1);
         }
 
