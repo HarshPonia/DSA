@@ -62,15 +62,17 @@ public class Linked_List {
         }
     }
 
+
     public static void main(String[] args) {
         Linked_List ls = new Linked_List();
         Scanner sc = new Scanner(System.in);
-//        ls = insert(ls,2,0);
-//        ls = insert(ls,1,1);
-//        ls = insert(ls,3,0);
-//        ls = insert(ls,4,0);
+        ls = insert(ls,2,0);
+        ls = insert(ls,1,1);
+        ls = insert(ls,3,0);
+        ls = insert(ls,4,0);
 //        System.out.println("Enter data to search: ");
 //        System.out.println(searching(sc.nextInt()));
-        print(ls);
+//        print(ls);
+//        System.out.println(ls.count_Node());
     }
 }

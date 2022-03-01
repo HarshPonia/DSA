@@ -68,7 +68,16 @@ public class LinkedList {
             currNode = currNode.next;
         }
     }
+    public int count_Node(LinkedList list){
+        Node temp = head;
+        int c = 0;
 
+        if(temp!=null){
+            c+= count_Node(list);
+            temp = temp.next;
+        }
+        return c;
+    }
     // Driver code
     public static void main(String[] args)
     {
@@ -90,6 +99,7 @@ public class LinkedList {
         list = insert(list, 8);
 
         // Print the LinkedList
-        printList(list);
+//        printList(list);
+        System.out.println(list.count_Node(list));
     }
 }

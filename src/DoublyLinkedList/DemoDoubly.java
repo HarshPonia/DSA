@@ -1,6 +1,7 @@
 package DoublyLinkedList;
 
 import Assignment.SingleWithTail;
+import Single_LinkedList.Linked_List;
 
 public class DemoDoubly {
     static Node head;
@@ -137,8 +138,12 @@ public class DemoDoubly {
         else{
             int e = head.data;
             head = head.next;
-            head.prev = null;
             size--;
+            if(IsEmpty())
+                tail = null;
+           else {
+               head.prev = null;
+            }
             return e;
         }
         return 0;
@@ -205,6 +210,18 @@ public class DemoDoubly {
             }
         }
     }
+    public int count_Node(){
+        Node temp = head;
+        int c = 0;
+
+        if(temp!=null){
+            c++;
+            count_Node();
+
+            temp = temp.next;
+        }
+        return c;
+    }
     public int Search(int d){
         if(head == null){
             return  -1;
@@ -246,16 +263,19 @@ public class DemoDoubly {
 //        obj.InsertAtEnd(15);
 //        obj.InsertAtEnd(20);
 //        obj.InsertAtEnd(25);
-//        obj.InsertAtPos(17,1);
+        obj.InsertAtPos(17,1);
         System.out.println("Deleted element is : " + obj.DeleteAtBeg());
-//        System.out.println("Deleted element is : " + obj.DeleteAtEnd());
-//        System.out.println("Deleted element is : " + obj.DeleteAtpos(2));
-//        obj.insertAtPos(new Node(21),6);
-        obj.Display();
-//        System.out.println("Result : "+ obj.Search(20));
-//        System.out.println("Result "+ obj.SearchWithNde(new Node(20)));
-//        System.out.println("Deleted elemen is :"+ obj.DeleteWithNode(new Node(20)));
+        System.out.println("Deleted element is : " + obj.DeleteAtBeg());
+        System.out.println("Deleted element is : " + obj.DeleteAtBeg());
+////        System.out.println("Deleted element is : " + obj.DeleteAtEnd());
+////        System.out.println("Deleted element is : " + obj.DeleteAtpos(2));
+////        obj.insertAtPos(new Node(21),6);
 //        obj.Display();
-        System.out.println("the Size of The linkedList is : "+ obj.length());
+////        System.out.println("Result : "+ obj.Search(20));
+////        System.out.println("Result "+ obj.SearchWithNde(new Node(20)));
+////        System.out.println("Deleted elemen is :"+ obj.DeleteWithNode(new Node(20)));
+////        obj.Display();
+//        System.out.println("the Size of The linkedList is : "+ obj.length());
+        System.out.println(obj.count_Node());
     }
 }
