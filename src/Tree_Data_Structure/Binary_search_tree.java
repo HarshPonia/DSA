@@ -8,12 +8,13 @@ public class Binary_search_tree {
   public  class Node {
       Node left;
       Node right;
-      int data;
+      int data,height;
       public Node(int d)
       {
           this.data = d;
           left = null;
           right = null;
+          height = 0;
       }
   }
   Node root;
@@ -121,6 +122,12 @@ public class Binary_search_tree {
       }
       return false;
   }
+  public int height(Node temp){
+      if(temp==null){
+          return 0;
+      }
+      return temp.height;
+  }
     public static void main(String[] args) {
         Binary_search_tree bst = new Binary_search_tree();
         Scanner sc = new Scanner(System.in);
@@ -137,11 +144,12 @@ public class Binary_search_tree {
         bst.preorder(bst.root);
         System.out.println("Postorder Traversal : ");
         bst.postorder(bst.root);
-        System.out.println("Enter the element to search  : ");
-        System.out.println(bst.seaching(sc.nextInt()));
+//        System.out.println("Enter the element to search  : ");
+//        System.out.println(bst.seaching(sc.nextInt()));
         System.out.println("Deleted element : ");
         bst.Delete(bst.root, 10);
         System.out.println("Inorder Traversal : ");
         bst.inorder(bst.root);
+        System.out.println("height of tree : "+(bst.height(bst.root)-1));
     }
 }
