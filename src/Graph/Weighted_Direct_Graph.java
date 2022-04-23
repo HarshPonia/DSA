@@ -31,6 +31,7 @@ public class Weighted_Direct_Graph {
         }
         return count;
     }
+
     public void egde(){
         System.out.println("Edges : ");
         for ( int i =0;i<vertices;i++)
